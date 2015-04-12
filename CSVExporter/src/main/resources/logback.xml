@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-	<property resource="it/group/my/holidays/properties/groupMyHolidays.properties" />
 	
 	<appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
 		<discriminator>
@@ -10,7 +9,7 @@
 	    </discriminator>
 	    <sift>
 	    	<appender name="FILE-${processName}" class="ch.qos.logback.core.FileAppender">
-	    		<file>${tomcat.server.log.dir}/gmh-console.log</file>
+	    		<file>goeuro-console.log</file>
 	    		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> 
 	    			<fileNamePattern>${tomcat.server.log.dir}/%d{yyyy-MM,aux}/${processName}-%d{yyyy-MM-dd}.%i.log</fileNamePattern> 
 	    			<timeBasedFileNamingAndTriggeringPolicy 
