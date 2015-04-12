@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<property resource="it/group/my/holidays/properties/groupMyHolidays.properties" />
+	
+	<appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
+		<discriminator>
+	      <key>processName</key>
+	      <defaultValue>gmh-stout</defaultValue>
+	    </discriminator>
+	    <sift>
+	    	<appender name="FILE-${processName}" class="ch.qos.logback.core.FileAppender">
+	    		<file>${tomcat.server.log.dir}/gmh-console.log</file>
+	    		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> 
+	    			<fileNamePattern>${tomcat.server.log.dir}/%d{yyyy-MM,aux}/${processName}-%d{yyyy-MM-dd}.%i.log</fileNamePattern> 
+	    			<timeBasedFileNamingAndTriggeringPolicy 
+						class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+						<maxFileSize>10MB</maxFileSize> 
+				  </timeBasedFileNamingAndTriggeringPolicy> 
+	    		</rollingPolicy>
+	    		<encoder>
+					<pattern>%date{ISO8601} [%thread] %-5level %logger{35} - %msg %n</pattern>
+				</encoder>
+	    		
+	    	</appender>
+	    
+	    </sift>
+	
+	</appender>
+	
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+         <pattern>%date{ISO8601} [%thread] %-5level %logger{35} - %msg %n</pattern>
+       </encoder>
+    </appender>
+    <logger name="it.group.my.holidays" additivity="false" level="DEBUG">
+       <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.mybatis.spring" additivity="false" level="DEBUG">
+       <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.apache.ibatis" additivity="false" level="DEBUG">
+       <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.springframework" additivity="false" level="DEBUG">
+        <appender-ref ref="STDOUT" />
+   </logger>
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
