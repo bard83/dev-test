@@ -32,19 +32,10 @@
          <pattern>%date{ISO8601} [%thread] %-5level %logger{35} - %msg %n</pattern>
        </encoder>
     </appender>
-    <logger name="it.group.my.holidays" additivity="false" level="DEBUG">
+    <logger name="de.goeuro" additivity="false" level="INFO">
        <appender-ref ref="STDOUT" />
     </logger>
-    <logger name="org.mybatis.spring" additivity="false" level="DEBUG">
-       <appender-ref ref="STDOUT" />
-    </logger>
-    <logger name="org.apache.ibatis" additivity="false" level="DEBUG">
-       <appender-ref ref="STDOUT" />
-    </logger>
-    <logger name="org.springframework" additivity="false" level="DEBUG">
-        <appender-ref ref="STDOUT" />
-   </logger>
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
 
